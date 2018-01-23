@@ -37,15 +37,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                if(percentageText == null || numberText == null){
-                    alertMsgText.setText("Please ensure you add the calculation");
-                } else {
+                try{
 
                     float percentage = Float.parseFloat(percentageText.getText().toString());
                     float dec = percentage / 100;
                     float total = dec * Float.parseFloat(numberText.getText().toString());
 
                     totalTextView.setText(Float.toString(total));
+                    alertMsgText.setText("");
+                } catch (Exception e){
+                    alertMsgText.setText("Please ensure you add both values for the calculation");
                 }
             }
         });
